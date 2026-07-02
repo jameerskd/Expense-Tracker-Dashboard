@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Expense Tracker Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">💰 Expense<span>Tracker</span></div>
+      <nav>
+        <a href="#" class="nav-link active" data-section="dashboard">📊 Dashboard</a>
+        <a href="#" class="nav-link" data-section="transactions">📋 Transactions</a>
+        <a href="#" class="nav-link" data-section="add">➕ Add New</a>
+      </nav>
+      <div class="sidebar-footer">
+        <p>Intern: SHAIK JAMEER</p>
+        <p>ID: CITS6159</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="topbar">
+        <h1 id="page-title">Dashboard</h1>
+        <div class="date-display" id="date-display"></div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="section active">
+        <div class="cards">
+          <div class="card income">
+            <h3>Total Income</h3>
+            <p id="total-income">₹0.00</p>
+          </div>
+          <div class="card expense">
+            <h3>Total Expense</h3>
+            <p id="total-expense">₹0.00</p>
+          </div>
+          <div class="card balance">
+            <h3>Balance</h3>
+            <p id="total-balance">₹0.00</p>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="panel">
+            <h2>Spending by Category</h2>
+            <canvas id="categoryChart" width="320" height="320"></canvas>
+          </div>
+          <div class="panel">
+            <h2>Recent Transactions</h2>
+            <ul id="recent-list" class="recent-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transactions Section -->
+      <section id="transactions" class="section">
+        <div class="filters">
+          <input type="text" id="search-input" placeholder="Search transactions..." />
+          <select id="filter-type">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <select id="filter-category">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+        <table class="transactions-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="transactions-body"></tbody>
+        </table>
+      </section>
+
+      <!-- Add New Section -->
+      <section id="add" class="section">
+        <form id="transaction-form" class="transaction-form">
+          <h2>Add New Transaction</h2>
+
+          <div class="type-toggle">
+            <button type="button" class="toggle-btn active" data-type="expense">Expense</button>
+            <button type="button" class="toggle-btn" data-type="income">Income</button>
+          </div>
+
+          <label for="desc">Description</label>
+          <input type="text" id="desc" placeholder="e.g. Grocery shopping" required />
+
+          <label for="amount">Amount (₹)</label>
+          <input type="number" id="amount" step="0.01" min="0.01" placeholder="0.00" required />
+
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Health">Health</option>
+            <option value="Salary">Salary</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="date">Date</label>
+          <input type="date" id="date" required />
+
+          <button type="submit" class="submit-btn">Add Transaction</button>
+          <p id="form-message"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
